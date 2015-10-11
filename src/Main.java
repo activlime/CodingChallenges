@@ -1,6 +1,7 @@
 import org.apache.commons.lang.ObjectUtils;
 
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -13,6 +14,51 @@ public class Main {
     public static void main(String[] args) {
         wordDistance();
     }
+
+    public static void readForPow() {
+        Scanner in = new Scanner(System.in);
+        int a = -1;
+        int b = -1;
+
+
+        System.out.println("Input base number: ");
+        try {
+            a = in.nextInt();
+        } catch (InputMismatchException exception) {
+            System.out.println(exception.toString());
+        }
+
+        System.out.println("Input exponent number': ");
+        try {
+            b = in.nextInt();
+        } catch (InputMismatchException exception) {
+            System.out.println(exception.toString());
+        }
+
+        double number = pow(a, Math.abs(b));
+        if (b < 0) {
+            number = 1/number;
+        }
+
+        System.out.println(number);
+    }
+
+    public static double pow(int a, int b) {
+        if (a == 0 || a == 1) {
+            if (b == 0) {
+                return 1;
+            } else {
+                return a;
+            }
+        }
+        if (b == 0) {
+            return 1;
+        }
+        if (b == 1) {
+            return a;
+        }
+
+        return (a * a) * pow(a, b - 2);
 
     public static void wordDistance() {
         Scanner in = new Scanner(System.in);
