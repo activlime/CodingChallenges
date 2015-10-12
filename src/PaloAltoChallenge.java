@@ -4,7 +4,12 @@ import java.util.Scanner;
 
 /**
  * Created by Andrew Cho on 10/11/2015.
+ * Function to print out all numbers from 1 to <n>
+ * who have exclusively prime factors (prime numbers should also be printed).
+ *
+ * runtime = BigO(n^1.5)
  */
+
 public class PaloAltoChallenge {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
