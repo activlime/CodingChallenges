@@ -58,7 +58,8 @@ public class Main {
             return a;
         }
 
-        return (a * a) * pow(a, b - 2);
+        return ((a * a) * pow(a, b - 2));
+    }
 
     public static void wordDistance() {
         Scanner in = new Scanner(System.in);
