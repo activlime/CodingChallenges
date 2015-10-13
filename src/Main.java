@@ -1,9 +1,7 @@
+import com.sun.corba.se.spi.orbutil.fsm.Input;
 import org.apache.commons.lang.ObjectUtils;
 
-import java.util.HashMap;
-import java.util.InputMismatchException;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by Andrew Cho on 10/11/2015.
@@ -12,7 +10,7 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) {
-        wordDistance();
+        checkTwoSum();
     }
 
     public static void readForPow() {
@@ -96,5 +94,62 @@ public class Main {
         int distance = Math.abs(dict.get(wordOne) - dict.get(wordTwo));
         System.out.println("Distance of word " + wordOne + " and " + wordTwo +
         " is " + distance);
+    }
+
+    public static void checkTwoSum() {
+        Map<Integer, Integer> numStore = new HashMap<Integer, Integer>();
+        Map<Integer, Boolean> sumNumStore = new HashMap<Integer, Boolean>();
+
+        Scanner in = new Scanner(System.in);
+        System.out.println("Input Numbers:");
+        int num = -1;
+
+        try {
+            num = in.nextInt();
+        } catch (InputMismatchException exception) {
+            System.out.println("need to input number");
+
+        }
+        while (num != -1) {
+            twoSum(num, numStore, sumNumStore);
+            try {
+                num = in.nextInt();
+            } catch (InputMismatchException exception) {
+                System.out.println("need to input number");
+                continue;
+            }
+        }
+
+        System.out.println(numStore);
+
+        do {
+            System.out.println("Check sum:");
+            try {
+                num = in.nextInt();
+            } catch (InputMismatchException exception) {
+                System.out.println("need to input number");
+                continue;
+            }
+            if (sumNumStore.containsKey(num)) {
+                System.out.println("Two sum exists");
+            } else {
+                System.out.println("Two sum does not exist");
+            }
+        } while (num != -1);
+    }
+
+    public static void twoSum(int num, Map<Integer, Integer> numStore, Map<Integer, Boolean> sumNumStore) {
+        if (!numStore.containsKey(num)) {
+            numStore.put(num, 1);
+        }
+        System.out.println(numStore);
+
+        Iterator it = numStore.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            int j = (int)pair.getKey();
+            sumNumStore.put(num+j, true);
+        }
+        System.out.println(numStore);
     }
 }
