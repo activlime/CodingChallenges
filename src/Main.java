@@ -119,8 +119,7 @@ public class Main {
                 continue;
             }
         }
-
-        System.out.println(numStore);
+        //System.out.println(numStore);
 
         do {
             System.out.println("Check sum:");
@@ -142,7 +141,7 @@ public class Main {
         if (!numStore.containsKey(num)) {
             numStore.put(num, 1);
         }
-        System.out.println(numStore);
+        //System.out.println(numStore);
 
         Iterator it = numStore.entrySet().iterator();
         while (it.hasNext()) {
@@ -150,6 +149,6 @@ public class Main {
             int j = (int)pair.getKey();
             sumNumStore.put(num+j, true);
         }
-        System.out.println(numStore);
+        //System.out.println(numStore);
     }
 }
