@@ -23,6 +23,10 @@ public class Node {
         mValue = value;
     }
 
+    public Node(char letter) {
+        this.mLetter = letter;
+    }
+
     public Node getmParent() {
         return mParent;
     }

@@ -13,31 +13,6 @@ public class Main {
         checkTwoSum();
     }
 
-    public static void checkSearch() {
-        int i = 0;
-        int value = -1;
-        char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
-        Scanner in = new Scanner(System.in);
-        Node head;
-
-        do {
-            System.out.println("Enter Node " + alphabet[i] + " Value, enter -1 to quit");
-            try {
-                value = in.nextInt();
-            } catch (InputMismatchException exception) {
-                System.out.println(exception.toString());
-            }
-
-            System.out.println("Enter amount of children");
-            try {
-                value = in.nextInt();
-            } catch (InputMismatchException exception) {
-                System.out.println(exception.toString());
-            }
-        } while(value != -1);
-    }
-
-
     public static void readForPow() {
         Scanner in = new Scanner(System.in);
         int a = -1;
