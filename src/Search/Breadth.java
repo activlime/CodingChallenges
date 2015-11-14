@@ -1,4 +1,4 @@
-package BreathFirst;
+package Search;
 
 import java.util.ArrayList;
 
@@ -12,7 +12,9 @@ public class Breadth {
 
     public Boolean search(Node head, Node n) {
         Node start = head;
+        head.setCovered(true);
         int value = n.getmValue();
+
         if (start.getmValue() == value) {
             return true;
         }
@@ -20,8 +22,10 @@ public class Breadth {
         while(start.getmValue() != value) {
             ArrayList<Node> temp = start.getmChildren();
             for (int i = 0; i < temp.size(); i++) {
-                if (search(temp.get(i), n)) {
-                    return true;
+                if (head.getCovered() != false) {
+                    if (search(temp.get(i), n)) {
+                        return true;
+                    }
                 }
             }
         }

@@ -1,4 +1,4 @@
-package BreathFirst;
+package Search;
 
 import java.util.ArrayList;
 
@@ -8,8 +8,12 @@ import java.util.ArrayList;
 public class Node {
     private Node mParent;
     private ArrayList<Node> mChildren = new ArrayList<Node>();
-
     private int mValue;
+    private Boolean covered;
+    public ArrayList<Node> getmChildren() {
+        return mChildren;
+    }
+
 
     public Node (Node parent, ArrayList children, int value) {
         mValue = value;
@@ -23,10 +27,6 @@ public class Node {
         this.mParent = mParent;
     }
 
-    public ArrayList<Node> getmChildren() {
-        return mChildren;
-    }
-
     public void setmChildren(ArrayList<Node> mChildren) {
         this.mChildren = mChildren;
     }
@@ -37,5 +37,13 @@ public class Node {
 
     public void setmValue(int mValue) {
         this.mValue = mValue;
+    }
+
+    public Boolean getCovered() {
+        return covered;
+    }
+
+    public void setCovered(Boolean covered) {
+        this.covered = covered;
     }
 }
