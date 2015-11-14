@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * Created by Andrew Cho on 11/10/2015.
  */
 public class Node {
+    private char mLetter;
     private Node mParent;
     private ArrayList<Node> mChildren = new ArrayList<Node>();
     private int mValue;
@@ -15,7 +16,10 @@ public class Node {
     }
 
 
-    public Node (Node parent, ArrayList children, int value) {
+    public Node (char letter, Node parent, ArrayList children, int value) {
+        this.mLetter = letter;
+        mParent = parent;
+        mChildren = children;
         mValue = value;
     }
 
