@@ -1,5 +1,6 @@
 import Search.Node;
 import com.sun.corba.se.spi.orbutil.fsm.Input;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.*;
 
@@ -10,7 +11,7 @@ import java.util.*;
  */
 public class Main {
     public static void main(String[] args) {
-        checkTwoSum();
+        checkConseqSum();
     }
 
     public static void readForPow() {
@@ -147,5 +148,53 @@ public class Main {
             int j = (int)pair.getKey();
             sumNumStore.put(num+j, true);
         }
+    }
+
+    public static void checkConseqSum() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Input Numbers:");
+        int num = -1;
+        Boolean badinput = false;
+
+        do {
+            try {
+                num = in.nextInt();
+            } catch (InputMismatchException exception) {
+                System.out.println("need to input number");
+                badinput = true;
+            }
+        } while(badinput);
+
+        Boolean conseqPossible = conseqNum((num));
+        if (conseqPossible) {
+            System.out.println(num + " is possible");
+        } else {
+            System.out.println(num + " is not possible");
+        }
+    }
+
+    //finds if consecutive sum is possible
+    //O(.5)
+    public static Boolean conseqNum(int num) {
+        if (num < 3) {
+            return false;
+        }
+        if (num % 2 != 0) {
+            return true;
+        }
+
+        for (int i = 3; i < num / 2; i++) {
+            if (i % 2 == 0) {
+                if (num / (double)i % .5 == 0) {
+                    return true;
+                }
+            } else {
+                if (num % i == 0) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
