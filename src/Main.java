@@ -1,6 +1,7 @@
 import Search.Node;
 import com.sun.corba.se.spi.orbutil.fsm.Input;
 import com.sun.org.apache.xpath.internal.operations.Bool;
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
 
 import java.util.*;
 
@@ -196,5 +197,23 @@ public class Main {
         }
 
         return false;
+    }
+
+    public static void swatchPositive(int[] array) {
+        int position = -1;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < 0) {
+                if (position - i > 1) {
+                    int size = i-position;
+                    for (int j = i; j < size/2; j++) {
+                        int temp = array[j];
+                        array[j] = array[size-j];
+                        array[size-j] = temp;
+                    }
+                }
+
+                position = i;
+            }
+        }
     }
 }
