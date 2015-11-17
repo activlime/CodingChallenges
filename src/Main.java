@@ -199,7 +199,11 @@ public class Main {
         return false;
     }
 
-    public static void swatchPositive(int[] array) {
+    /*
+     * Looks through array and flips only positive numbers
+     * O(1)
+     */
+    public static void swapPositive(int[] array) {
         int position = -1;
         for (int i = 0; i < array.length; i++) {
             if (array[i] < 0) {
