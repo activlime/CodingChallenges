@@ -329,4 +329,37 @@ public class Main {
             }
         }
     }
+
+    /**
+     * count how many flowers you can add to the garden
+     * 
+     * @param flowerbed
+     * @param numberToPlace
+     * @return
+     */
+    public static boolean canPlaceFlowers(List<Boolean> flowerbed, int numberToPlace) {
+        int count = 0;
+        int flowers = 0;
+        for (int i = 0; i < flowerbed.size(); i++) {
+            if (!flowerbed.get(i)) {
+                count++;
+            } else {
+                if (count > 1) {
+                    if (count % 2 == 1) {
+                        flowers += count /2;
+                    }
+                }
+                count = 0;
+            }
+        }
+        if (count == 2) {
+            flowers++;
+        }
+        if (flowers >= numberToPlace) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
