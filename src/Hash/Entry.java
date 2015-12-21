@@ -9,8 +9,8 @@ public class Entry {
     private Entry next;
 
     public Entry(int key, int value) {
-        key = key;
-        value = value;
+        this.key = key;
+        this.value = value;
     }
 
 

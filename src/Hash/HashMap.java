@@ -11,7 +11,7 @@ public class HashMap {
     private Entry[] entries;
 
     public HashMap(int size) {
-        size = size;
+        this.size = size;
         entries = new Entry[size];
     }
 
@@ -30,6 +30,7 @@ public class HashMap {
             element.setNext(newEntry);
         }
         entries[hash] = newEntry;
+        System.out.println("" + key + ": " + entries[hash].getValue());
     }
 
     public void deleteEntry() {
@@ -37,7 +38,17 @@ public class HashMap {
     }
 
     public int getValue(int key) {
-
+        int hash = getHash(key);
+        Entry temp = this.entries[hash];
+        while(temp != null) {
+            if (temp.getKey() == key) {
+                return temp.getValue();
+            }
+        }
         return -1;
+    }
+
+    public int getSize() {
+        return size;
     }
 }

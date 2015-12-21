@@ -12,7 +12,7 @@ import java.util.*;
  */
 public class Main {
     public static void main(String[] args) {
-        checkConseqSum();
+        HashMapTest();
     }
 
     public static void readForPow() {
@@ -217,6 +217,115 @@ public class Main {
                 }
 
                 position = i;
+            }
+        }
+    }
+
+    public static void HashMapTest() {
+        Hash.HashMap hashmap = new Hash.HashMap(100);
+        hashmap = addHashElements(hashmap);
+        getHashElements(hashmap);
+    }
+
+    public static Hash.HashMap addHashElements(Hash.HashMap hashmap) {
+        Scanner in = new Scanner(System.in);
+        int key = -1;
+        int value = -1;
+        Boolean badinput = false;
+
+        do {
+            System.out.print("Enter num key for element: ");
+            try {
+                key = in.nextInt();
+                badinput = false;
+            } catch (InputMismatchException exception) {
+                System.out.println("/nneed to input number");
+                badinput = true;
+                continue;
+            }
+
+            if (key != -1) {
+                do {
+                    System.out.print("Enter int value for element: ");
+                    try {
+                        value = in.nextInt();
+                        badinput = false;
+                    } catch (InputMismatchException exception) {
+                        System.out.println("need to input number");
+                        badinput = true;
+                    }
+                } while (badinput);
+            } else if (key == -1) {
+                continue;
+            }
+
+            hashmap.addEntry(key, value);
+        } while(badinput || key != -1);
+
+        return hashmap;
+    }
+
+    public static void getHashElements(Hash.HashMap hashmap) {
+        Scanner in = new Scanner(System.in);
+        int key = -1;
+        Boolean badinput = false;
+
+        do {
+            System.out.print("Enter num key for element to get: ");
+            try {
+                key = in.nextInt();
+                badinput = false;
+            } catch (InputMismatchException exception) {
+                System.out.println("need to input number");
+                badinput = true;
+                continue;
+            }
+            System.out.println("hit if statement");
+            System.out.println("bad input " + badinput);
+            if (key != -1) {
+                System.out.println("in non exit key");
+                int value = hashmap.getValue(key);
+                if (value != -1) {
+                    System.out.println("The key " + key + " has value " + value);
+                } else {
+                    System.out.println("The key is not found");
+                }
+            }
+            System.out.println("end of do while");
+        } while(badinput || key != -1);
+    }
+
+    /*
+    *create union and intersection
+    *
+     */
+    public static void unionIntersection(List<Integer> A, List<Integer> B) {
+        List<Integer> union = new ArrayList<Integer>();
+        List<Integer> intersection = new ArrayList<Integer>();
+
+        int indexA = 0;
+        int indexB = 0;
+        int size = A.size() + B.size();
+
+        while(indexA != A.size() - 1 && indexB != B.size() - 1) {
+            if (indexA - 1 == A.size()) {
+                union.add(B.get(indexB));
+                indexB++;
+            } else if (indexB - 1 == B.size()) {
+                union.add(A.get(indexA));
+                indexA++;
+            }
+
+            if (A.get(indexA) < B.get(indexB)) {
+                union.add(A.get(indexA));
+                indexA++;
+            } else if (A.get(indexA) > B.get(indexB)) {
+                union.add(B.get(indexB));
+                indexB++;
+            } else {
+                intersection.add(A.get(indexA));
+                indexA++;
+                indexB++;
             }
         }
     }
