@@ -15,6 +15,9 @@ public class Main {
         HashMapTest();
     }
 
+    /*
+     * give back pow result
+     */
     public static void readForPow() {
         Scanner in = new Scanner(System.in);
         int a = -1;
@@ -43,6 +46,9 @@ public class Main {
         System.out.println(number);
     }
 
+    /*
+     * Pow function
+     */
     public static double pow(int a, int b) {
         if (a == 0 || a == 1) {
             if (b == 0) {
@@ -61,6 +67,9 @@ public class Main {
         return ((a * a) * pow(a, b - 2));
     }
 
+    /*
+     * find distance between words
+     */
     public static void wordDistance() {
         Scanner in = new Scanner(System.in);
         Map<String, Integer> dict = new HashMap<String, Integer>();
@@ -98,59 +107,57 @@ public class Main {
         " is " + distance);
     }
 
+    /*
+     * See if two numbers in a list is equal to sum desginated
+     *
+     * O(n)
+     */
     public static void checkTwoSum() {
-        Map<Integer, Integer> numStore = new HashMap<Integer, Integer>();
-        Map<Integer, Boolean> sumNumStore = new HashMap<Integer, Boolean>();
+        Set<Integer> numStore = new HashSet<Integer>();
+        List<Integer> originalNumbers = new ArrayList<Integer>();
 
         Scanner in = new Scanner(System.in);
+
+        //number to match
+        System.out.print("Input number to find");
+        int numFind = -1;
+        try {
+            numFind = in.nextInt();
+        } catch (InputMismatchException exception) {
+            System.out.println("need to input proper number");
+        }
+
         System.out.println("Input Numbers:");
         int num = -1;
 
-        try {
-            num = in.nextInt();
-        } catch (InputMismatchException exception) {
-            System.out.println("need to input number");
-
-        }
-        while (num != -1) {
-            twoSum(num, numStore, sumNumStore);
-            try {
-                num = in.nextInt();
-            } catch (InputMismatchException exception) {
-                System.out.println("need to input number");
-                continue;
-            }
-        }
-
         do {
-            System.out.println("Check sum:");
             try {
                 num = in.nextInt();
             } catch (InputMismatchException exception) {
                 System.out.println("need to input number");
                 continue;
             }
-            if (sumNumStore.containsKey(num)) {
-                System.out.println("Two sum exists");
-            } else {
-                System.out.println("Two sum does not exist");
-            }
+            originalNumbers.add(num);
         } while (num != -1);
-    }
 
-    public static void twoSum(int num, Map<Integer, Integer> numStore, Map<Integer, Boolean> sumNumStore) {
-        if (!numStore.containsKey(num)) {
-            numStore.put(num, 1);
-        }
-
-        Iterator it = numStore.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry)it.next();
-            int j = (int)pair.getKey();
-            sumNumStore.put(num+j, true);
+        for (int i = 0; i < originalNumbers.size(); i++) {
+            num = originalNumbers.get(i);
+            twoSum(numFind, num, numStore);
         }
     }
 
+    public static Boolean twoSum(int numFind, int num,  Set<Integer> numStore) {
+        int difference = numFind - num;
+        if (numStore.contains(difference)) {
+            return true;
+        }
+        numStore.add(num);
+        return false;
+    }
+
+    /*
+     * check if there is a consequtive sum is possible
+     */
     public static void checkConseqSum() {
         Scanner in = new Scanner(System.in);
         System.out.println("Input Numbers:");
@@ -177,7 +184,8 @@ public class Main {
     //finds if consecutive sum is possible
     //O(.5)
     public static Boolean conseqNum(int num) {
-        if (num < 3) {
+        if (num <
+                3) {
             return false;
         }
         if (num % 2 != 0) {
@@ -227,6 +235,9 @@ public class Main {
         getHashElements(hashmap);
     }
 
+    /*
+     * hash map implementation
+     */
     public static Hash.HashMap addHashElements(Hash.HashMap hashmap) {
         Scanner in = new Scanner(System.in);
         int key = -1;
