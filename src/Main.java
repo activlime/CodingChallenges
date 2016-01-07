@@ -146,6 +146,10 @@ public class Main {
         }
     }
 
+    /*
+     * Check if difference is in set
+     * For twosum
+     */
     public static Boolean twoSum(int numFind, int num,  Set<Integer> numStore) {
         int difference = numFind - num;
         if (numStore.contains(difference)) {
@@ -182,7 +186,7 @@ public class Main {
     }
 
     //finds if consecutive sum is possible
-    //O(.5)
+    //O(n^.5)
     public static Boolean conseqNum(int num) {
         if (num <
                 3) {
@@ -209,7 +213,7 @@ public class Main {
 
     /*
      * Looks through array and flips only positive numbers
-     * O(1)
+     * O(n)
      */
     public static void swapPositive(int[] array) {
         int position = -1;
@@ -307,8 +311,9 @@ public class Main {
     }
 
     /*
-    *create union and intersection
-    *
+     * create union and intersection
+     *
+     * O(n)
      */
     public static void unionIntersection(List<Integer> A, List<Integer> B) {
         List<Integer> union = new ArrayList<Integer>();
