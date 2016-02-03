@@ -18,6 +18,11 @@ public class ThreeArray {
     public ThreeArray() {
         presetArray();
         addTwo(2);
+        addOne(1);
+        addOne(1);
+        addTwo(2);
+        addThree(3);
+        addTwo(2);
         printArray();
     }
 
@@ -46,6 +51,11 @@ public class ThreeArray {
         int size = size();
         if (size >= bound) {
             doubleArray();
+        }
+        if (size == 0 || threesize == 0) {
+            arr[size] = num;
+            twosize++;
+            return;
         }
 
         int twototal = onesize+twosize;
